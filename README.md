@@ -106,6 +106,8 @@ my-pack/
 │   └── static/{Dark,Light}/
 └── signs/
     └── apps/{scalable,symbolic,16}/
+    │
+    ...
 ```
 
 Ricing should be a creative and accessible process, so you can mix and match
@@ -113,7 +115,7 @@ freely: take `yamis`' icons with your own frames, or sign layers of your own
 style with a frame from somewhere else. Nothing here is monolithic.
 
 Read **[PACK_STRUCTURE.md](./PACK_STRUCTURE.md)** for the full layout, then
-validate your work with the bundled script (bash only, no dependencies):
+validate your work with the bundled script:
 
 ```bash
 ./validate.sh my-pack
@@ -139,8 +141,7 @@ ___
 
 - New icons go into the matching `signs/<category>/<variant>/` directory.
 - Add a checkbox line to `yamis/neededicons.list` when you add a *wanted* icon.
-- Run `./validate.sh` before committing — CI does it for you.
-- Keep the structure documented in `PACK_STRUCTURE.md` in sync.
+- Run `./validate.sh` before committing.
 
 ## License
 
