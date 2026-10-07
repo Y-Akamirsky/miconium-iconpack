@@ -1,0 +1,12 @@
+# build / tooling leftovers
+target/
+debug/
+*.pkg.tar.zst
+*.sig
+.makepkg-*
+opencode.*
+
+# editor noise
+*.swp
+*~
+.DS_Store

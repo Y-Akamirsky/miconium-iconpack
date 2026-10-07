@@ -1,0 +1,22 @@
+name: Validate packs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    name: Structural validation
+    runs-on: ubuntu-latest
+    steps:
+      # The pack is large; a plain shallow clone is enough.
+      - uses: actions/checkout@v4
+
+      - name: Validate all packs
+        run: ./validate.sh
+
+      - name: Ensure the Makefile install works (staged)
+        run: |
+          make install DESTDIR="$RUNNER_TEMP/stage" PREFIX=/usr
+          test -d "$RUNNER_TEMP/stage/usr/share/miconium/yamis"

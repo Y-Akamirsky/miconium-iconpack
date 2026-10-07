@@ -1,0 +1,33 @@
+# Maintainer: Y-Akamirsky
+pkgname=miconium-iconpack
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Official Miconium icon packs (yamis) — installed and updated independently from the Miconium program"
+arch=('any')
+url="https://github.com/Y-Akamirsky/miconium-iconpack"
+license=('GPL3')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    cd "$pkgname-$pkgver"
+
+    # Structural check before anything lands in the package.
+    ./validate.sh
+
+    install -dm755 "$pkgdir/usr/share/miconium"
+
+    # Every pack lives at the repository root and installs into
+    # /usr/share/miconium/<pack>/, where Miconium resolves it by name.
+    local pack
+    for pack in */; do
+        pack="${pack%/}"
+        [ -d "$pack/frames" ] && [ -d "$pack/signs" ] || continue
+        echo "  packaging pack: $pack"
+        cp -a "$pack" "$pkgdir/usr/share/miconium/"
+        chmod -R a+rX "$pkgdir/usr/share/miconium/$pack"
+    done
+
+    install -Dm644 "PACK_STRUCTURE.md" "$pkgdir/usr/share/doc/$pkgname/PACK_STRUCTURE.md"
+    install -Dm644 "LICENSE"        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

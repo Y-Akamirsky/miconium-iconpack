@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# .ignore — keeps ripgrep/fd fast in this repository.
+#
+# The pack is ~11k SVG files; most tools should skip the layer trees unless
+# explicitly asked for them.
+
+yamis/
