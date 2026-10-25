@@ -1,7 +1,7 @@
 # Maintainer: Y-Akamirsky
 pkgname=miconium-iconpack
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Official Miconium icon packs (yamis) — installed and updated independently from the Miconium program"
 arch=('any')
 url="https://github.com/Y-Akamirsky/miconium-iconpack"

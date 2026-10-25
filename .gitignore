@@ -1,10 +1,13 @@
 # build / tooling leftovers
 target/
 debug/
+*.tar.gz
 *.pkg.tar.zst
 *.sig
 .makepkg-*
 opencode.*
+src/
+pkg/
 
 # editor noise
 *.swp
